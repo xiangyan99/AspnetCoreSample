@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  customersapi:
+    image: ${DOCKER_REGISTRY}customersapi
+    build:
+      context: .
+      dockerfile: src/CustomersAPI/Dockerfile
+
+  customersmvc:
+    image: ${DOCKER_REGISTRY}customersmvc
+    build:
+      context: .
+      dockerfile: src/CustomersMVC/Dockerfile
+
