@@ -85,9 +85,11 @@
 1. provision Jenkins host  
     [Create a Jenkins server on an Azure Linux VM from the Azure portal](https://docs.microsoft.com/en-us/azure/jenkins/install-jenkins-solution-template)
 
-1. Create a new pipeline job and define parameters "git_repo", "acr_username", "acr_password", "registry_url"
+1. install docker, kubectl on Jenkins machine
 
-1. Config the pipeline script  
+1. create a new pipeline job and define parameters "git_repo", "acr_username", "acr_password", "registry_url"
+
+1. config the pipeline script  
 
 ```bash
 node {
