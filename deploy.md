@@ -90,10 +90,10 @@
 1. Config the pipeline script  
 
 ```bash
-node {  
-    def built_img = ''  
-    stage('Checkout git repo') {  
-      git branch: 'master', url: params.git_repo  
+node {
+    def built_img = ''
+    stage('Checkout git repo') {
+      git branch: 'master', url: params.git_repo
     }
     stage('Build and push Docker image') {
       sh(script: "docker login ${registry_url} -u ${acr_username} -p ${acr_password}", returnStdout: true)
@@ -104,6 +104,16 @@ node {
     }
     stage('Unit Tests') {
       sh 'echo test'
+    }
+    stage('Browser Tests'){
+        parallel(
+            "Edge":{sh 'echo test'},
+            "Firefox":{sh 'echo test'},
+            "Chrome":{sh 'echo test'}
+            )
+    }
+    stage('Deploy into k8s') {
+      sh(script: "cat k8s/k8s.yaml | sed -e 's/build_number/${BUILD_NUMBER}/g' | kubectl apply -f - --kubeconfig /var/lib/jenkins/.kube/config", returnStdout: true)
     }
 }
 ```
