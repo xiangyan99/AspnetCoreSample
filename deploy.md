@@ -119,3 +119,5 @@ node {
     }
 }
 ```
+
+p.s You need to folk the repo and update ACR url in k8s/k8s.yaml to make the Jenkins job work.
