@@ -80,7 +80,7 @@
 
 ## This is the workflow  
 
-   ![Resource List](workflow.png)
+   ![Resource List](Workflow.png)
 
 1. provision Jenkins host  
     [Create a Jenkins server on an Azure Linux VM from the Azure portal](https://docs.microsoft.com/en-us/azure/jenkins/install-jenkins-solution-template)
